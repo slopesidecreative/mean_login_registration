@@ -9,17 +9,11 @@ app.controller('sessionController', function($scope, sessionFactory, usersFactor
       }
    });
 
-   //  $scope.login = function(){
-   //      sessionFactory.login($scope.loginUser)
-   //  }
-
     $scope.login = function(){
         sessionFactory.login($scope.loginUser,
            function(data){ // callback
              console.log("Client session controller recieved back: ",data);
              if (data.data.errors){
-                // TODO SHOW THE ERRORS ON THE PAGE
-               console.log('here!',data.data.errors);
                $scope.errors = data.data.errors;
                alert('Login failed! ' + data.data.errors.login_reg.message);
              }else{
